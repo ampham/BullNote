@@ -16,4 +16,6 @@ Pre-requisites
 Getting Started
 ---------------
 
-Clone this repo or download as ZIP.
+Bull Note is available for free in the Google Play store: [Get Bull Note for Android](https://play.google.com/store/apps/details?id=com.bullnote.buffalo.burgers)
+
+For developers: Clone this repo or download as ZIP.
