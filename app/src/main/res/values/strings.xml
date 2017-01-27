@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bull Note</string>
+    <string name="newNote"><u><i>Write a new note.</i></u></string>
 </resources>

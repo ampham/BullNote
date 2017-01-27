@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,18 +38,28 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         // The view to click to add a new note - should probably not be a text view
-        TextView newNote = (TextView) findViewById(R.id.new_note);
-        newNote.setOnClickListener(new View.OnClickListener() {
+        Button newNoteButton = (Button) findViewById(R.id.new_note);
+        newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NoteActivity.class);
-                startActivity(intent);
+                openNewNote();
             }
         });
 
         // Find the ListView to populate with notes and attach an adapter to it
         // Since there is no data yet (that comes with the loader) we pass in null
         ListView notesListView = (ListView) findViewById(R.id.list);
+
+        View emptyView = findViewById(R.id.empty_view);
+        notesListView.setEmptyView(emptyView);
+
+        View emptySubtitle = (TextView) findViewById(R.id.empty_subtitle_text);
+        emptySubtitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openNewNote();
+            }
+        });
 
         mCursorAdapter = new NoteCursorAdapter(this, null);
         notesListView.setAdapter(mCursorAdapter);
@@ -73,6 +84,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Kick off the loader
         getLoaderManager().initLoader(NOTE_LOADER, null, this);
+    }
+
+    // Opens the New Note form
+    private void openNewNote(){
+        Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+        startActivity(intent);
     }
 
     /**
