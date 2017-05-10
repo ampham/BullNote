@@ -92,16 +92,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         startActivity(intent);
     }
 
-    /**
-     * Implementing LoaderCallbacks interface methods:
-     *
-     * onCreateLoader defines the Cursor that will be returned from the database: what columns we
-     * want, etc.
-     *
-     * onLoadFinished actually passes the data off to the adapter
-     *
-     * onLoaderReset clears the cursor to prevent memory leaks
-     * */
+    // Implementing LoaderCallbacks interface methods
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // Define a projection that specifies the columns from the table we want
